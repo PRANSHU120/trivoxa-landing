@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    @apply bg-dark-bg text-white;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+  }
+
+  h1 {
+    @apply text-4xl md:text-6xl font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply text-3xl md:text-5xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+}
+
+@layer components {
+  .navbar-blur {
+    @apply backdrop-blur-md bg-dark-card/40 border border-white/10;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-fusion bg-clip-text text-transparent;
+  }
+
+  .card-glass {
+    @apply relative bg-dark-card/40 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden;
+  }
+
+  .card-glass-hover {
+    @apply card-glass transition-all duration-300 hover:shadow-glow hover:border-gradient-start/50;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-fusion text-white hover:shadow-glow-lg transform hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 rounded-lg font-semibold transition-all duration-300 border border-white/20 text-white hover:border-gradient-start/50 hover:shadow-glow;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24;
+  }
+
+  .glow-blur {
+    @apply absolute inset-0 blur-3xl pointer-events-none;
+  }
+
+  .text-muted {
+    @apply text-gray-400;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-mid rounded-full;
+}
