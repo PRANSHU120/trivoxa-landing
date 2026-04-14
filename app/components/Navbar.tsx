@@ -15,58 +15,66 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-dark-bg/80 border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
+    <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#06031A]/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6">
+        
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-lg bg-gradient-fusion flex items-center justify-center text-white font-bold text-lg group-hover:shadow-glow transition-all">
+        <Link href="/" className="flex items-center gap-2">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-fuchsia-500 via-violet-500 to-purple-600 text-lg font-bold text-white transition-all hover:scale-105">
             T
           </div>
-          <span className="font-bold text-lg gradient-text hidden sm:inline">TRIVOXA</span>
+          <span className="hidden bg-gradient-to-r from-fuchsia-400 via-violet-300 to-purple-400 bg-clip-text text-lg font-bold text-transparent sm:inline">
+            TRIVOXA
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="text-gray-400 hover:text-white transition-colors duration-300 font-medium text-sm"
+              className="text-sm font-medium text-gray-400 transition-colors duration-300 hover:text-white"
             >
               {link.label}
             </Link>
           ))}
         </div>
 
-        {/* CTA Button - Desktop */}
-        <div className="hidden md:flex gap-3">
-          <button className="btn-secondary text-sm">Get Started</button>
+        {/* CTA Button */}
+        <div className="hidden md:flex">
+          <button className="rounded-lg border border-white/20 px-5 py-2 text-sm font-semibold text-white transition-all hover:border-fuchsia-400/50 hover:bg-white/5">
+            Get Started
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 hover:bg-dark-card rounded-lg transition-colors"
+          className="rounded-lg p-2 transition-colors hover:bg-white/10 md:hidden"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden border-t border-white/10 bg-dark-card/50 backdrop-blur-sm">
-          <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-4">
+        <div className="border-t border-white/10 bg-[#06031A]/90 backdrop-blur-sm md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-gray-400 hover:text-white transition-colors py-2 font-medium"
+                className="py-2 font-medium text-gray-400 transition-colors hover:text-white"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <button className="btn-primary text-sm w-full mt-2">Get Started</button>
+
+            <button className="mt-2 w-full rounded-lg bg-gradient-to-r from-fuchsia-500 via-violet-500 to-purple-600 py-2 text-sm font-semibold text-white">
+              Get Started
+            </button>
           </div>
         </div>
       )}
