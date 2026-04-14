@@ -28,52 +28,53 @@ export default function Footer() {
     { icon: ExternalLink, href: '#', label: 'Twitter' },
     { icon: GitBranch, href: '#', label: 'GitHub' },
     { icon: LucideLink, href: '#', label: 'LinkedIn' },
-    { icon: Mail, href: '#', label: 'Email' },
+    { icon: Mail, href: 'mailto:hello@trivoxa.com', label: 'Email' },
   ];
 
   return (
     <footer className="border-t border-white/10 bg-[#06031A]/50 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-16">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
-          {/* Brand */}
+      <div className="mx-auto max-w-7xl px-4 py-16 md:px-6">
+        <div className="mb-12 grid grid-cols-1 gap-8 md:grid-cols-5">
           <div className="col-span-1 space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-gradient-fusion flex items-center justify-center text-white font-bold text-lg">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-fuchsia-500 via-violet-500 to-purple-600 text-lg font-bold text-white">
                 T
               </div>
-              <span className="font-bold gradient-text">TRIVOXA</span>
+              <span className="bg-gradient-to-r from-fuchsia-400 via-violet-300 to-purple-400 bg-clip-text font-bold text-transparent">
+                TRIVOXA
+              </span>
             </Link>
+
             <p className="text-sm text-gray-400">
               Empowering Digital Growth through innovation and design.
             </p>
+
             <div className="flex gap-4">
               {socials.map((social) => {
                 const Icon = social.icon;
                 return (
-                  <Link
+                  <a
                     key={social.label}
                     href={social.href}
-                    className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-gradient-start/50 transition-all"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-400 transition-all hover:border-fuchsia-400/50 hover:text-white"
                     aria-label={social.label}
                   >
                     <Icon size={18} />
-                  </Link>
+                  </a>
                 );
               })}
             </div>
           </div>
 
-          {/* Links */}
           {Object.entries(links).map(([title, items]) => (
             <div key={title} className="space-y-4">
-              <h3 className="font-semibold text-white text-sm">{title}</h3>
+              <h3 className="text-sm font-semibold text-white">{title}</h3>
               <ul className="space-y-2">
                 {items.map((item) => (
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="text-sm text-gray-400 hover:text-white transition-colors"
+                      className="text-sm text-gray-400 transition-colors hover:text-white"
                     >
                       {item.label}
                     </Link>
@@ -84,14 +85,13 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-gray-400 md:flex-row">
           <p>&copy; {currentYear} TRIVOXA TECH. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="#" className="hover:text-white transition-colors">
+            <Link href="#" className="transition-colors hover:text-white">
               Privacy Policy
             </Link>
-            <Link href="#" className="hover:text-white transition-colors">
+            <Link href="#" className="transition-colors hover:text-white">
               Terms of Service
             </Link>
           </div>
